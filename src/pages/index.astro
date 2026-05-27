@@ -1,17 +1,247 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Shel's Art — Original Oil Paintings">
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-label">Original Oil Paintings</p>
+    <div class="hero-image">
+      <img
+        src="/images/IMG_0007.JPG"
+        alt="Still life with ceramic pitcher, tangerine, and bread on a plate"
+      />
+    </div>
+    <h1 class="hero-title">Shel's Art</h1>
+    <p class="hero-sub">Oil on canvas originals &nbsp;&middot;&nbsp; Prints available</p>
+    <div class="hero-links">
+      <a href="/gallery" class="btn-primary">View Gallery</a>
+      <a href="/shop" class="btn-secondary">Shop Prints</a>
+    </div>
+  </section>
+
+  <!-- Featured Works -->
+  <section class="featured">
+    <h2 class="section-title">Selected Works</h2>
+    <div class="works-grid">
+      <a href="/gallery" class="work-item">
+        <img
+          src="/images/IMG_0005.JPG"
+          alt="Figurative painting — figure in flames on an altar"
+        />
+      </a>
+      <a href="/gallery" class="work-item">
+        <img
+          src="/images/IMG_0029.jpg"
+          alt="Still life — green grapes in a blue bowl"
+        />
+      </a>
+      <a href="/gallery" class="work-item">
+        <img
+          src="/images/IMG_0012.jpg"
+          alt="Whimsical nativity scene with toys"
+        />
+      </a>
+    </div>
+    <a href="/gallery" class="gallery-link">View the full gallery &rarr;</a>
+  </section>
+
+  <!-- Artist Statement -->
+  <section class="statement">
+    <div class="statement-inner">
+      <p>Work that moves between the classical and the surreal &mdash; still lifes painted with care, allegories rendered in oil, and scenes that linger.</p>
+      <a href="/about" class="about-link">About the artist</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Hero ──────────────────────────────────── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+  }
+
+  .hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 680px;
+    box-shadow: 0 8px 40px rgba(44, 24, 16, 0.15);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    padding: 0.75rem 2rem;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+  }
+
+  .btn-secondary {
+    padding: 0.75rem 2rem;
+    border: 1px solid var(--subtle);
+    color: var(--text);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Featured Works ────────────────────────── */
+  .featured {
+    padding: 4rem 2rem 5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .work-item {
+    overflow: hidden;
+    display: block;
+  }
+
+  .work-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .work-item:hover img {
+    transform: scale(1.03);
+  }
+
+  .gallery-link {
+    display: block;
+    text-align: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    transition: color 0.2s;
+  }
+
+  .gallery-link:hover {
+    color: var(--text);
+  }
+
+  /* ── Artist Statement ──────────────────────── */
+  .statement {
+    border-top: 1px solid var(--subtle);
+    padding: 4rem 2rem;
+  }
+
+  .statement-inner {
+    max-width: 580px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .statement-inner p {
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.9;
+    margin-bottom: 1.75rem;
+  }
+
+  .about-link {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .about-link:hover {
+    color: var(--text);
+    border-color: var(--text);
+  }
+
+  /* ── Mobile ────────────────────────────────── */
+  @media (max-width: 640px) {
+    .hero {
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+
+    .works-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 900px) {
+    .works-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
