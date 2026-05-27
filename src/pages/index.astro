@@ -10,8 +10,9 @@ import Layout from '../layouts/Layout.astro';
     <div class="hero-image">
       <img
         src="/images/IMG_0007.JPG"
-        alt="Still life with ceramic pitcher, tangerine, and bread on a plate"
+        alt="Milk and Honey — oil on canvas still life with ceramic pitcher, tangerine, and bread"
       />
+      <p class="hero-caption"><em>Milk and Honey</em> &nbsp;&middot;&nbsp; Oil on canvas &nbsp;&middot;&nbsp; <span class="artprize-note">Currently exhibited at ArtPrize, Grand Rapids</span></p>
     </div>
     <h1 class="hero-title">Shel's Art</h1>
     <p class="hero-sub">Oil on canvas originals &nbsp;&middot;&nbsp; Prints available</p>
@@ -85,6 +86,18 @@ import Layout from '../layouts/Layout.astro';
   .hero-image img {
     width: 100%;
     height: auto;
+  }
+
+  .hero-caption {
+    margin-top: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  .artprize-note {
+    color: var(--accent);
   }
 
   .hero-title {
