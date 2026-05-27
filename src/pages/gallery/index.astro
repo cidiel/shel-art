@@ -1,0 +1,195 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const paintings = [
+  {
+    src: '/images/IMG_0007.JPG',
+    title: 'Milk and Honey',
+    medium: 'Oil on canvas',
+    href: '/gallery/milk-and-honey',
+    note: 'ArtPrize 2025',
+  },
+  {
+    src: '/images/IMG_0005.JPG',
+    title: 'Untitled',
+    medium: 'Oil on canvas',
+    href: null,
+  },
+  {
+    src: '/images/IMG_0029.jpg',
+    title: 'Untitled',
+    medium: 'Oil on canvas',
+    href: null,
+  },
+  {
+    src: '/images/IMG_0012.jpg',
+    title: 'Untitled',
+    medium: 'Oil on canvas',
+    href: null,
+  },
+];
+---
+
+<Layout title="Gallery — Shel's Art" description="Original oil paintings by Shel">
+  <div class="gallery-header">
+    <h1>Gallery</h1>
+    <p class="gallery-sub">Original oil paintings on canvas</p>
+  </div>
+
+  <div class="gallery-grid">
+    {paintings.map((p) => (
+      <div class={`card ${p.href ? 'card--linked' : ''}`}>
+        {p.href ? (
+          <a href={p.href}>
+            <div class="card-image">
+              <img src={p.src} alt={p.title} />
+              <div class="card-overlay">
+                <span>View work</span>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="card-title">{p.title}</p>
+              <p class="card-medium">{p.medium}{p.note ? <span class="card-note">&nbsp;&middot;&nbsp;{p.note}</span> : ''}</p>
+            </div>
+          </a>
+        ) : (
+          <div>
+            <div class="card-image card-image--soon">
+              <img src={p.src} alt={p.title} />
+              <div class="card-overlay card-overlay--soon">
+                <span>Coming soon</span>
+              </div>
+            </div>
+            <div class="card-info">
+              <p class="card-title card-title--muted">{p.title}</p>
+              <p class="card-medium">{p.medium}</p>
+            </div>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</Layout>
+
+<style>
+  .gallery-header {
+    padding: 3.5rem 2rem 2rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+
+  .gallery-sub {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 2rem auto 5rem;
+    padding: 0 2rem;
+  }
+
+  .card a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-image {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .card--linked:hover .card-image img {
+    transform: scale(1.04);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(44, 24, 16, 0.45);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .card--linked:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .card-overlay span {
+    color: #FDFAF5;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .card-overlay--soon {
+    background: rgba(44, 24, 16, 0.2);
+  }
+
+  .card-image--soon:hover .card-overlay--soon {
+    opacity: 1;
+  }
+
+  .card-info {
+    padding: 0.9rem 0 0;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-title--muted {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .card-medium {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+
+  .card-note {
+    color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 900px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

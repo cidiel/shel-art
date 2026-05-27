@@ -1,0 +1,308 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Milk and Honey — Shel's Art"
+  description="Original oil painting by Shel. Currently exhibited at ArtPrize, Grand Rapids."
+>
+  <div class="breadcrumb">
+    <a href="/gallery">&larr; Gallery</a>
+  </div>
+
+  <div class="artwork-page">
+
+    <!-- Painting -->
+    <div class="artwork-left">
+      <figure class="artwork-figure">
+        <img
+          src="/images/IMG_0007.JPG"
+          alt="Milk and Honey — oil on canvas still life"
+          class="artwork-img"
+          id="artworkImg"
+          title="Click to inspect"
+        />
+        <figcaption>Click image to inspect detail</figcaption>
+      </figure>
+    </div>
+
+    <!-- Details -->
+    <div class="artwork-right">
+      <p class="artwork-label">Original</p>
+      <h1 class="artwork-title">Milk and Honey</h1>
+      <p class="artwork-medium">Oil on canvas</p>
+
+      <div class="artprize-badge">
+        <span class="badge-dot"></span>
+        Currently exhibited at ArtPrize, Grand Rapids
+      </div>
+
+      <div class="artwork-meta">
+        <div class="meta-row">
+          <span class="meta-key">Year</span>
+          <span class="meta-val">—</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Dimensions</span>
+          <span class="meta-val">—</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Availability</span>
+          <span class="meta-val availability">Currently Exhibited</span>
+        </div>
+      </div>
+
+      <div class="artwork-description">
+        <p>A quietly loaded table — honey and bread, a peeled tangerine, a painted jug. The arrangement is simple; the weight of it is not.</p>
+      </div>
+
+      <a href="mailto:shelart@shelsart.com?subject=Inquiry: Milk and Honey" class="btn-inquire">
+        Inquire About This Work
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img
+      src="/images/IMG_0007.JPG"
+      alt="Milk and Honey — full resolution"
+      class="lightbox-img"
+    />
+  </dialog>
+
+</Layout>
+
+<script>
+  const img = document.getElementById('artworkImg') as HTMLImageElement;
+  const lightbox = document.getElementById('lightbox') as HTMLDialogElement;
+  const closeBtn = document.getElementById('lightboxClose') as HTMLButtonElement;
+
+  img.addEventListener('click', () => lightbox.showModal());
+  closeBtn.addEventListener('click', () => lightbox.close());
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.close();
+  });
+</script>
+
+<style>
+  .breadcrumb {
+    padding: 2rem 3rem 0;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .breadcrumb a {
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--accent);
+  }
+
+  /* ── Two-column layout ───────────────────────── */
+  .artwork-page {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 2.5rem auto 5rem;
+    padding: 0 3rem;
+    align-items: start;
+  }
+
+  /* ── Painting panel ──────────────────────────── */
+  .artwork-figure {
+    position: sticky;
+    top: 90px;
+  }
+
+  .artwork-img {
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+    box-shadow: 0 8px 40px rgba(44, 24, 16, 0.14);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .artwork-img:hover {
+    box-shadow: 0 12px 56px rgba(44, 24, 16, 0.22);
+  }
+
+  .artwork-figure figcaption {
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── Details panel ───────────────────────────── */
+  .artwork-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .artwork-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+
+  .artwork-medium {
+    font-size: 0.9rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.75rem;
+  }
+
+  .artprize-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--subtle);
+    background: rgba(139, 105, 20, 0.06);
+    margin-bottom: 2rem;
+  }
+
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .artwork-meta {
+    border-top: 1px solid var(--subtle);
+    border-bottom: 1px solid var(--subtle);
+    padding: 1.25rem 0;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+  }
+
+  .meta-key {
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .meta-val {
+    color: var(--text);
+  }
+
+  .availability {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .artwork-description {
+    margin-bottom: 2.5rem;
+  }
+
+  .artwork-description p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .btn-inquire {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: var(--text);
+    color: var(--bg);
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  .btn-inquire:hover {
+    background: var(--accent);
+  }
+
+  /* ── Lightbox ────────────────────────────────── */
+  dialog.lightbox {
+    max-width: 95vw;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    overflow: visible;
+  }
+
+  dialog.lightbox::backdrop {
+    background: rgba(15, 10, 5, 0.93);
+  }
+
+  .lightbox-img {
+    max-width: 92vw;
+    max-height: 90vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.75rem;
+    background: none;
+    border: none;
+    color: #FDFAF5;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    z-index: 10;
+  }
+
+  .lightbox-close:hover {
+    opacity: 1;
+  }
+
+  /* ── Mobile ──────────────────────────────────── */
+  @media (max-width: 860px) {
+    .artwork-page {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 0 1.25rem;
+    }
+
+    .artwork-figure {
+      position: static;
+    }
+
+    .breadcrumb {
+      padding: 1.5rem 1.25rem 0;
+    }
+  }
+</style>
