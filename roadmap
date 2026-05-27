@@ -1,0 +1,102 @@
+● Good question to understand before you commit to anything. Here's how it works:                                                                                                                               
+   
+  ---                                                                                                                                                                                                           
+  The Basic Flow                                                                                                                                                                                                
+                                                                                                                                                                                                                
+  You write code locally → push to GitHub → hosting platform picks it up → serves it to visitors
+                                                                                                                                                                                                                
+  Your domain name just points to wherever your site is hosted. That's it.                                                                                                                                      
+                                                                                                                                                                                                                
+  ---                                                                                                                                                                                                           
+  Where the Code Lives
+                      
+  GitHub is where you store and version your code. Free, industry standard, and every hosting platform connects to it. Think of it as the source of truth — you make changes locally, push to GitHub, and the
+  site updates automatically.                                                                                                                                                                                   
+   
+  ---                                                                                                                                                                                                           
+  Hosting Options (Where It Actually Runs)
+                                                                                                                                                                                                                
+  Vercel — what I'd recommend for this project
+                                                                                                                                                                                                                
+  - Free tier is genuinely generous (more than enough for a personal art site)
+  - Connects directly to GitHub — push code, site updates in seconds                                                                                                                                            
+  - Handles everything automatically (SSL certificate, CDN, fast global delivery)                                                                                                                               
+  - Built for exactly this kind of modern static/dynamic site                                                                                                                                                   
+  - No server management on your part                                                                                                                                                                           
+                                                                                                                                                                                                                
+  Netlify                                                                                                                                                                                                       
+   
+  - Nearly identical to Vercel, also free tier                                                                                                                                                                  
+  - Either works fine — this is largely personal preference
+                                                                                                                                                                                                                
+  GitHub Pages
+                                                                                                                                                                                                                
+  - Free, but limited — static sites only, no backend logic                                                                                                                                                     
+  - Fine for a pure portfolio, not ideal once you add Stripe/payments
+                                                                                                                                                                                                                
+  VPS (DigitalOcean, Linode, etc.)                                                                                                                                                                              
+                                                                                                                                                                                                                
+  - You rent an actual server ($5-6/mo)                                                                                                                                                                         
+  - Full control but you manage everything — updates, security, uptime
+  - Overkill for this project, unnecessary complexity                                                                                                                                                           
+                                                                                                                                                                                                                
+  ---                                                                                                                                                                                                           
+  What "No Server Management" Actually Means on Vercel                                                                                                                                                          
+                                                                                                                                                                                                                
+  With Vercel you never:
+  - SSH into a machine                                                                                                                                                                                          
+  - Worry about uptime or crashes                                                                                                                                                                               
+  - Configure web servers (nginx etc.)
+  - Manage SSL renewals                                                                                                                                                                                         
+                                                                                                                                                                                                                
+  You just write code and push. They handle the infrastructure.
+                                                                                                                                                                                                                
+  ---
+  The Full Picture                                                                                                                                                                                              
+   
+  Local machine (you write code)
+       ↓ git push                                                                                                                                                                                               
+  GitHub (code storage)
+       ↓ auto-deploys                                                                                                                                                                                           
+  Vercel (hosting/serving)
+       ↑                                                                                                                                                                                                        
+  Domain (shelsart.com points here via DNS)
+                                                                                                                                                                                                                
+  The DNS step — pointing your domain to Vercel — is about a 2-minute configuration in Cloudflare once you're ready. Cloudflare + Vercel work together very cleanly.                                            
+                                                                                                                                                                                                                
+  Want to start by getting the GitHub and Vercel accounts set up, or tackle the domain first?                                                                                                                   
+   
+❯ not tonight but i would like to save this conversation to get me started on a 'hello world' version of how we get to this sort of look... i'm thinking i should have all the pictures etc of what i want to   
+post on github?                                                                                                                                                                                                 
+                                                                                                                                                                                                                
+● Good stopping point for tonight. Let me save what we've covered so future conversations pick up right where we left off.                                                                                      
+                                                                                                                                                                                                                
+  Read 1 file, recalled 1 memory, wrote 3 memories (ctrl+o to expand)                                                                                                                                           
+   
+● Done — I'll remember all of this next time.                                                                                                                                                                   
+   
+  ---                                                                                                                                                                                                           
+  On Your Photos Question
+                                                                                                                                                                                                                
+  Short answer: not on GitHub. Here's why:
+                                                                                                                                                                                                                
+  - GitHub is for code — it handles large image files poorly and has size limits                                                                                                                                
+  - Cloudinary is where your actual artwork photos live — it's built for this, serves images fast globally, and has a free tier that'll cover you well                                                          
+  - You just upload photos to Cloudinary, and your code references them by URL                                                                                                                                  
+                                                                                                                                                                                                                
+  So the structure is:                                                                                                                                                                                          
+  GitHub     → your code                                                                                                                                                                                        
+  Cloudinary → your artwork photos                                                                                                                                                                              
+  Vercel     → runs it all live   
+
+  ---                                                                                                                                                                                                           
+  For Next Session — Hello World Starting Point
+                                                                                                                                                                                                                
+  When you come back, we'll:
+                                                                                                                                                                                                                
+  1. Get you set up on GitHub (create account + first repo)                                                                                                                                                     
+  2. Get you set up on Vercel (connect to GitHub)                                                                                                                                                               
+  3. Write a minimal Astro site — just your name, one image, clean layout                                                                                                                                       
+  4. Deploy it live so you can see the full pipeline working end to end                                                                                                                                         
+                                                                                                                                                                                                                
+  That gives you a real working foundation to build on. Rest well!     
