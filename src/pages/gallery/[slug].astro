@@ -1,10 +1,19 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { paintings } from '../../data/paintings.js';
+
+export function getStaticPaths() {
+  return paintings
+    .filter((p) => p.slug !== null)
+    .map((p) => ({ params: { slug: p.slug }, props: { painting: p } }));
+}
+
+const { painting } = Astro.props;
 ---
 
 <Layout
-  title="Milk and Honey — Shel's Art"
-  description="Original oil painting by Shel. Currently exhibited at ArtPrize, Grand Rapids."
+  title={`${painting.title} — Shel's Art`}
+  description={painting.description ?? `${painting.title} — original oil painting by Shel.`}
 >
   <div class="breadcrumb">
     <a href="/gallery">&larr; Gallery</a>
@@ -16,8 +25,8 @@ import Layout from '../../layouts/Layout.astro';
     <div class="artwork-left">
       <figure class="artwork-figure">
         <img
-          src="/images/IMG_0007.JPG"
-          alt="Milk and Honey — oil on canvas still life"
+          src={painting.src}
+          alt={`${painting.title} — oil on canvas`}
           class="artwork-img"
           id="artworkImg"
           title="Click to inspect"
@@ -29,34 +38,43 @@ import Layout from '../../layouts/Layout.astro';
     <!-- Details -->
     <div class="artwork-right">
       <p class="artwork-label">Original</p>
-      <h1 class="artwork-title">Milk and Honey</h1>
-      <p class="artwork-medium">Oil on canvas</p>
+      <h1 class="artwork-title">{painting.title}</h1>
+      <p class="artwork-medium">{painting.medium}</p>
 
-      <div class="artprize-badge">
-        <span class="badge-dot"></span>
-        Currently exhibited at ArtPrize, Grand Rapids
-      </div>
+      {painting.exhibition && (
+        <div class="artprize-badge">
+          <span class="badge-dot"></span>
+          {painting.exhibition}
+        </div>
+      )}
 
       <div class="artwork-meta">
         <div class="meta-row">
           <span class="meta-key">Year</span>
-          <span class="meta-val">—</span>
+          <span class="meta-val">{painting.year ?? '—'}</span>
         </div>
         <div class="meta-row">
           <span class="meta-key">Dimensions</span>
-          <span class="meta-val">—</span>
+          <span class="meta-val">{painting.dimensions ?? '—'}</span>
         </div>
         <div class="meta-row">
           <span class="meta-key">Availability</span>
-          <span class="meta-val availability">Currently Exhibited</span>
+          <span class={`meta-val ${painting.availability === 'Available' ? 'available' : 'exhibited'}`}>
+            {painting.availability ?? '—'}
+          </span>
         </div>
       </div>
 
-      <div class="artwork-description">
-        <p>A quietly loaded table — honey and bread, a peeled tangerine, a painted jug. The arrangement is simple; the weight of it is not.</p>
-      </div>
+      {painting.description && (
+        <div class="artwork-description">
+          <p>{painting.description}</p>
+        </div>
+      )}
 
-      <a href="mailto:shelart@shelsart.com?subject=Inquiry: Milk and Honey" class="btn-inquire">
+      <a
+        href={`mailto:contact@shelsart.com?subject=Inquiry: ${painting.title}`}
+        class="btn-inquire"
+      >
         Inquire About This Work
       </a>
     </div>
@@ -67,8 +85,8 @@ import Layout from '../../layouts/Layout.astro';
   <dialog class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
     <img
-      src="/images/IMG_0007.JPG"
-      alt="Milk and Honey — full resolution"
+      src={painting.src}
+      alt={`${painting.title} — full resolution`}
       class="lightbox-img"
     />
   </dialog>
@@ -82,7 +100,6 @@ import Layout from '../../layouts/Layout.astro';
 
   img.addEventListener('click', () => lightbox.showModal());
   closeBtn.addEventListener('click', () => lightbox.close());
-
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) lightbox.close();
   });
@@ -106,7 +123,6 @@ import Layout from '../../layouts/Layout.astro';
     color: var(--accent);
   }
 
-  /* ── Two-column layout ───────────────────────── */
   .artwork-page {
     display: grid;
     grid-template-columns: 1fr 380px;
@@ -117,7 +133,6 @@ import Layout from '../../layouts/Layout.astro';
     align-items: start;
   }
 
-  /* ── Painting panel ──────────────────────────── */
   .artwork-figure {
     position: sticky;
     top: 90px;
@@ -144,7 +159,6 @@ import Layout from '../../layouts/Layout.astro';
     color: var(--muted);
   }
 
-  /* ── Details panel ───────────────────────────── */
   .artwork-label {
     font-size: 0.75rem;
     letter-spacing: 0.2em;
@@ -174,7 +188,6 @@ import Layout from '../../layouts/Layout.astro';
     gap: 0.6rem;
     font-size: 0.82rem;
     color: var(--accent);
-    letter-spacing: 0.04em;
     padding: 0.75rem 1rem;
     border: 1px solid var(--subtle);
     background: rgba(139, 105, 20, 0.06);
@@ -210,13 +223,14 @@ import Layout from '../../layouts/Layout.astro';
     letter-spacing: 0.06em;
   }
 
-  .meta-val {
-    color: var(--text);
+  .available {
+    color: #4a7c59;
+    font-style: italic;
   }
 
-  .availability {
-    font-style: italic;
+  .exhibited {
     color: var(--accent);
+    font-style: italic;
   }
 
   .artwork-description {
@@ -226,7 +240,6 @@ import Layout from '../../layouts/Layout.astro';
   .artwork-description p {
     font-size: 1rem;
     line-height: 1.85;
-    color: var(--text);
     font-style: italic;
   }
 
@@ -247,7 +260,6 @@ import Layout from '../../layouts/Layout.astro';
     background: var(--accent);
   }
 
-  /* ── Lightbox ────────────────────────────────── */
   dialog.lightbox {
     max-width: 95vw;
     max-height: 95vh;
@@ -282,14 +294,12 @@ import Layout from '../../layouts/Layout.astro';
     line-height: 1;
     opacity: 0.7;
     transition: opacity 0.2s;
-    z-index: 10;
   }
 
   .lightbox-close:hover {
     opacity: 1;
   }
 
-  /* ── Mobile ──────────────────────────────────── */
   @media (max-width: 860px) {
     .artwork-page {
       grid-template-columns: 1fr;

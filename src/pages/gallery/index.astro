@@ -1,63 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
-const paintings = [
-  {
-    src: '/images/IMG_0007.JPG',
-    title: 'Milk and Honey',
-    medium: 'Oil on canvas',
-    href: '/gallery/milk-and-honey',
-    note: 'ArtPrize 2025',
-  },
-  {
-    src: '/images/IMG_0010.jpg',
-    title: 'Untitled',
-    medium: 'Oil on canvas',
-    href: null,
-  },
-  {
-    src: '/images/IMG_0016.jpg',
-    title: 'Untitled',
-    medium: 'Oil on canvas',
-    href: null,
-  },
-  {
-    src: '/images/IMG_0005.JPG',
-    title: 'Untitled',
-    medium: 'Oil on canvas',
-    href: null,
-  },
-  {
-    src: '/images/IMG_0029.jpg',
-    title: 'Untitled',
-    medium: 'Oil on canvas',
-    href: null,
-  },
-  {
-    src: '/images/IMG_0014.jpg',
-    title: 'Untitled',
-    medium: 'Oil on canvas',
-    href: null,
-  },
-  {
-    src: '/images/IMG_0012.jpg',
-    title: 'Untitled',
-    medium: 'Oil on canvas',
-    href: null,
-  },
-  {
-    src: '/images/IMG_0013.jpg',
-    title: 'Untitled',
-    medium: 'Oil on canvas',
-    href: null,
-  },
-  {
-    src: '/images/IMG_0015.jpg',
-    title: 'Untitled',
-    medium: 'Oil on canvas',
-    href: null,
-  },
-];
+import { paintings } from '../../data/paintings.js';
 ---
 
 <Layout title="Gallery — Shel's Art" description="Original oil paintings by Shel">
@@ -68,9 +11,9 @@ const paintings = [
 
   <div class="gallery-grid">
     {paintings.map((p) => (
-      <div class={`card ${p.href ? 'card--linked' : ''}`}>
-        {p.href ? (
-          <a href={p.href}>
+      <div class={`card ${p.slug ? 'card--linked' : ''}`}>
+        {p.slug ? (
+          <a href={`/gallery/${p.slug}`}>
             <div class="card-image">
               <img src={p.src} alt={p.title} />
               <div class="card-overlay">
@@ -79,16 +22,16 @@ const paintings = [
             </div>
             <div class="card-info">
               <p class="card-title">{p.title}</p>
-              <p class="card-medium">{p.medium}{p.note ? <span class="card-note">&nbsp;&middot;&nbsp;{p.note}</span> : ''}</p>
+              <p class="card-medium">
+                {p.medium}
+                {p.exhibition && <span class="card-note">&nbsp;&middot;&nbsp;ArtPrize 2025</span>}
+              </p>
             </div>
           </a>
         ) : (
           <div>
-            <div class="card-image card-image--soon">
+            <div class="card-image">
               <img src={p.src} alt={p.title} />
-              <div class="card-overlay card-overlay--soon">
-                <span>Coming soon</span>
-              </div>
             </div>
             <div class="card-info">
               <p class="card-title card-title--muted">{p.title}</p>
@@ -174,14 +117,6 @@ const paintings = [
     font-size: 0.78rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-  }
-
-  .card-overlay--soon {
-    background: rgba(44, 24, 16, 0.2);
-  }
-
-  .card-image--soon:hover .card-overlay--soon {
-    opacity: 1;
   }
 
   .card-info {
