@@ -17,6 +17,13 @@ pnpm-debug.log*
 .env
 .env.production
 
+# RAW camera files — too large for git, keep locally only
+*.CR3
+*.CR2
+*.RAW
+*.ARW
+*.NEF
+
 # macOS-specific files
 .DS_Store
 
