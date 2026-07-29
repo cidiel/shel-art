@@ -33,8 +33,8 @@ export const paintings = [
     description: null,
   },
   {
-    slug: 'the-pyre',
-    title: 'The Pyre',
+    slug: 'forgiveness',
+    title: 'Forgiveness',
     src: '/images/IMG_0005.JPG',
     medium: 'Oil on canvas',
     year: null,
