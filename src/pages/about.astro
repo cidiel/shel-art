@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About — Shel's Art"
+  description="Michelle Leidich is a representational artist working from life in oil, watercolor, drawing, and sculpture."
+>
+  <div class="about-page">
+
+    <div class="about-left">
+      <figure class="about-figure">
+        <img
+          src="/images/michelle_headshot.jpg"
+          alt="Michelle Leidich, artist"
+          class="about-img"
+        />
+      </figure>
+    </div>
+
+    <div class="about-right">
+      <p class="about-label">About the Artist</p>
+      <h1 class="about-title">Michelle Leidich</h1>
+
+      <div class="about-bio">
+        <p>
+          Michelle Leidich is a representational artist who prefers working
+          from life. She enjoys painting still lifes, landscapes, portraits,
+          and creating scenes that have a more imaginative, realistic, and
+          narrative aspect to them. She also likes creating paintings that
+          express her Christian faith.
+        </p>
+        <p>
+          The goal of her work is to bring out the natural physical beauty
+          of texture, form, color, and light — while emphasizing its value,
+          relationship, and purpose in society.
+        </p>
+        <p>
+          Her method of working includes drawing, watercolor, and oil
+          painting, and sometimes sculpture. She has a BFA in Drawing and
+          Painting from the University of Toledo and extensive classwork at
+          the Grand Central Atelier in NYC. She is currently based in
+          Columbus, Ohio.
+        </p>
+      </div>
+
+      <a
+        href="mailto:contact@shelsart.com?subject=Commission Inquiry"
+        class="btn-inquire"
+      >
+        Get In Touch
+      </a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .about-page {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 2.5rem auto 5rem;
+    padding: 0 3rem;
+    align-items: start;
+  }
+
+  .about-figure {
+    position: sticky;
+    top: 90px;
+  }
+
+  .about-img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 8px 40px rgba(44, 24, 16, 0.14);
+  }
+
+  .about-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .about-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 1.75rem;
+  }
+
+  .about-bio {
+    margin-bottom: 2.5rem;
+  }
+
+  .about-bio p {
+    font-size: 1rem;
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+  }
+
+  .about-bio p:last-child {
+    margin-bottom: 0;
+  }
+
+  .btn-inquire {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    background: var(--text);
+    color: var(--bg);
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  .btn-inquire:hover {
+    background: var(--accent);
+  }
+
+  @media (max-width: 860px) {
+    .about-page {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 0 1.25rem;
+    }
+
+    .about-figure {
+      position: static;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  }
+</style>
