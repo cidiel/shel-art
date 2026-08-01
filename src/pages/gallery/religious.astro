@@ -3,9 +3,11 @@ import Layout from '../../layouts/Layout.astro';
 import GalleryHeader from '../../components/GalleryHeader.astro';
 import GalleryGrid from '../../components/GalleryGrid.astro';
 import { paintings } from '../../data/paintings.js';
+
+const filtered = paintings.filter((p) => p.category === 'religious');
 ---
 
-<Layout title="Gallery — Shel's Art" description="Original oil paintings by Shel">
-  <GalleryHeader title="Gallery" />
-  <GalleryGrid paintings={paintings} />
+<Layout title="Religious — Gallery — Shel's Art" description="Religious oil paintings by Shel">
+  <GalleryHeader title="Religious" />
+  <GalleryGrid paintings={filtered} />
 </Layout>

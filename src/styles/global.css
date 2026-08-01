@@ -76,6 +76,52 @@ a {
   color: var(--text);
 }
 
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-menu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 190px;
+  background: var(--bg);
+  border: 1px solid var(--subtle);
+  box-shadow: 0 10px 28px rgba(44, 24, 16, 0.14);
+  padding: 0.9rem 0 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease;
+}
+
+.nav-dropdown-menu li + li {
+  margin-top: 0.1rem;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.55rem 1.25rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-dropdown-menu a:hover {
+  color: var(--text);
+  background: rgba(139, 105, 20, 0.08);
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* ── Footer ──────────────────────────────────── */
 .footer {
   margin-top: auto;

@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GalleryHeader from '../../components/GalleryHeader.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import { paintings } from '../../data/paintings.js';
+
+const filtered = paintings.filter((p) => p.category === 'landscape');
+---
+
+<Layout title="Landscapes — Gallery — Shel's Art" description="Landscape oil paintings by Shel">
+  <GalleryHeader title="Landscapes" />
+  <GalleryGrid paintings={filtered} />
+</Layout>

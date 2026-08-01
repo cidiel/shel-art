@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GalleryHeader from '../../components/GalleryHeader.astro';
+import GalleryGrid from '../../components/GalleryGrid.astro';
+import { paintings } from '../../data/paintings.js';
+
+const filtered = paintings.filter((p) => p.category === 'still-life');
+---
+
+<Layout title="Still Lifes — Gallery — Shel's Art" description="Still life oil paintings by Shel">
+  <GalleryHeader title="Still Lifes" />
+  <GalleryGrid paintings={filtered} />
+</Layout>
