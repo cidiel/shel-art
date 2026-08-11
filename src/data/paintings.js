@@ -193,7 +193,7 @@ export const paintings = [
   },
   {
     slug: 'red-cabbage-halved',
-    title: 'Red Cabbage, Halved',
+    title: 'Red Cabbage',
     category: 'still-life',
     src: '/images/IMG_0019.jpg',
     medium: 'Oil on canvas',
