@@ -9,6 +9,13 @@ export function getStaticPaths() {
 }
 
 const { painting } = Astro.props;
+
+const categoryRoutes = {
+  'still-life': { slug: 'still-lifes', label: 'Still Lifes' },
+  landscape: { slug: 'landscapes', label: 'Landscapes' },
+  religious: { slug: 'religious', label: 'Religious' },
+};
+const categoryRoute = categoryRoutes[painting.category];
 ---
 
 <Layout
@@ -16,7 +23,7 @@ const { painting } = Astro.props;
   description={painting.description ?? `${painting.title} — original oil painting by Shel.`}
 >
   <div class="breadcrumb">
-    <a href="/gallery">&larr; Gallery</a>
+    <a href={`/gallery/${categoryRoute.slug}`}>&larr; {categoryRoute.label}</a>
   </div>
 
   <div class="artwork-page">

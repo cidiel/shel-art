@@ -17,35 +17,16 @@ import Layout from '../layouts/Layout.astro';
     <h1 class="hero-title">Shel's Art</h1>
     <p class="hero-sub">Oil on canvas originals &nbsp;&middot;&nbsp; Prints available</p>
     <div class="hero-links">
-      <a href="/gallery" class="btn-primary">View Gallery</a>
+      <div class="gallery-dropdown">
+        <button type="button" class="btn-primary">View Gallery</button>
+        <ul class="gallery-dropdown-menu">
+          <li><a href="/gallery/still-lifes">Still Lifes</a></li>
+          <li><a href="/gallery/landscapes">Landscapes</a></li>
+          <li><a href="/gallery/religious">Religious</a></li>
+        </ul>
+      </div>
       <a href="/shop" class="btn-secondary">Shop Prints</a>
     </div>
-  </section>
-
-  <!-- Featured Works -->
-  <section class="featured">
-    <h2 class="section-title">Selected Works</h2>
-    <div class="works-grid">
-      <a href="/gallery" class="work-item">
-        <img
-          src="/images/IMG_0005.JPG"
-          alt="Figurative painting — figure in flames on an altar"
-        />
-      </a>
-      <a href="/gallery" class="work-item">
-        <img
-          src="/images/IMG_0029.jpg"
-          alt="Still life — green grapes in a blue bowl"
-        />
-      </a>
-      <a href="/gallery" class="work-item">
-        <img
-          src="/images/IMG_0012.jpg"
-          alt="Whimsical nativity scene with toys"
-        />
-      </a>
-    </div>
-    <a href="/gallery" class="gallery-link">View the full gallery &rarr;</a>
   </section>
 
   <!-- Artist Statement -->
@@ -137,6 +118,53 @@ import Layout from '../layouts/Layout.astro';
     background: var(--accent);
   }
 
+  .gallery-dropdown {
+    position: relative;
+  }
+
+  .gallery-dropdown-menu {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 190px;
+    background: var(--bg);
+    border: 1px solid var(--subtle);
+    box-shadow: 0 10px 28px rgba(44, 24, 16, 0.14);
+    padding: 0.9rem 0 0.5rem;
+    margin-top: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.18s ease;
+  }
+
+  .gallery-dropdown-menu li + li {
+    margin-top: 0.1rem;
+  }
+
+  .gallery-dropdown-menu a {
+    display: block;
+    padding: 0.55rem 1.25rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .gallery-dropdown-menu a:hover {
+    color: var(--text);
+    background: rgba(139, 105, 20, 0.08);
+  }
+
+  .gallery-dropdown:hover .gallery-dropdown-menu,
+  .gallery-dropdown:focus-within .gallery-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .btn-secondary {
     padding: 0.75rem 2rem;
     border: 1px solid var(--subtle);
@@ -150,60 +178,6 @@ import Layout from '../layouts/Layout.astro';
   .btn-secondary:hover {
     border-color: var(--accent);
     color: var(--accent);
-  }
-
-  /* ── Featured Works ────────────────────────── */
-  .featured {
-    padding: 4rem 2rem 5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    font-style: italic;
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .work-item {
-    overflow: hidden;
-    display: block;
-  }
-
-  .work-item img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .work-item:hover img {
-    transform: scale(1.03);
-  }
-
-  .gallery-link {
-    display: block;
-    text-align: center;
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    transition: color 0.2s;
-  }
-
-  .gallery-link:hover {
-    color: var(--text);
   }
 
   /* ── Artist Statement ──────────────────────── */
@@ -244,17 +218,6 @@ import Layout from '../layouts/Layout.astro';
   @media (max-width: 640px) {
     .hero {
       padding: 2.5rem 1.25rem 3.5rem;
-    }
-
-    .works-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-  }
-
-  @media (min-width: 641px) and (max-width: 900px) {
-    .works-grid {
-      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
