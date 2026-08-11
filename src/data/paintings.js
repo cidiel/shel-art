@@ -5,10 +5,10 @@ export const paintings = [
     category: 'still-life',
     src: '/images/IMG_0007.JPG',
     medium: 'Oil on canvas',
-    year: null,
+    year: 2025,
     dimensions: null,
     availability: 'Currently Exhibited',
-    exhibition: 'ArtPrize 2025, Grand Rapids',
+    exhibition: 'Exhibiting at ArtPrize, Grand Rapids, MI · Fall 2026',
     description: 'A quietly loaded table — honey and bread, a peeled tangerine, a painted jug. The arrangement is simple; the weight of it is not.',
   },
   {
@@ -37,7 +37,7 @@ export const paintings = [
   },
   {
     slug: 'forgiveness',
-    title: 'Forgiveness',
+    title: 'A Sketch of Forgiveness',
     category: 'religious',
     src: '/images/IMG_0005.JPG',
     medium: 'Oil on canvas',
