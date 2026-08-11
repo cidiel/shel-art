@@ -240,18 +240,6 @@ export const paintings = [
     description: 'Caps still on, stems still green — two strawberries on a worn board, nothing added.',
   },
   {
-    slug: 'bouquet-in-a-glass-vase',
-    title: 'Bouquet in a Glass Vase',
-    category: 'still-life',
-    src: '/images/IMG_0024_c.jpg',
-    medium: 'Oil on canvas',
-    year: null,
-    dimensions: null,
-    availability: 'Available',
-    exhibition: null,
-    description: 'Roses, tulips, and anemones crowded into a small glass vase — no arranging beyond what a hand does in passing.',
-  },
-  {
     slug: 'starfish-in-a-bowl',
     title: 'Starfish in a Bowl',
     category: 'still-life',
