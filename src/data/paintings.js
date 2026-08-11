@@ -204,18 +204,6 @@ export const paintings = [
     description: 'A cabbage split open on rumpled linen, its violet rings catching the light — the knife just out of frame, still part of the scene.',
   },
   {
-    slug: 'brussels-sprouts',
-    title: 'Brussels Sprouts',
-    category: 'still-life',
-    src: '/images/IMG_0022_c.jpg',
-    medium: 'Oil on canvas',
-    year: null,
-    dimensions: null,
-    availability: 'Available',
-    exhibition: null,
-    description: 'Two whole, one halved — small green worlds set out on slate, unglamorous and exact.',
-  },
-  {
     slug: 'bread-on-crystal',
     title: 'Bread on Crystal',
     category: 'still-life',
