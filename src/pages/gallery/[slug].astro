@@ -1,7 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { paintings, getPrintPrice } from '../../data/paintings.js';
-import { STRIPE_ORIGINAL_LINK, STRIPE_PRINT_LINK, checkoutUrl } from '../../data/checkout.js';
+import { paintings } from '../../data/paintings.js';
+// Stripe checkout (priced Original/Print buttons) — on hold, not live yet.
+// To bring it back: uncomment this import, the three `const` lines below,
+// and the commented JSX block in artwork-actions further down.
+// import { getPrintPrice } from '../../data/paintings.js';
+// import { STRIPE_ORIGINAL_LINK, STRIPE_PRINT_LINK, checkoutUrl } from '../../data/checkout.js';
 
 export function getStaticPaths() {
   return paintings
@@ -17,9 +21,9 @@ const categoryRoutes = {
   religious: { slug: 'religious', label: 'Religious' },
 };
 const categoryRoute = categoryRoutes[painting.category];
-const printPrice = getPrintPrice(painting);
-const originalCheckout = checkoutUrl(STRIPE_ORIGINAL_LINK, painting.slug);
-const printCheckout = checkoutUrl(STRIPE_PRINT_LINK, painting.slug);
+// const printPrice = getPrintPrice(painting);
+// const originalCheckout = checkoutUrl(STRIPE_ORIGINAL_LINK, painting.slug);
+// const printCheckout = checkoutUrl(STRIPE_PRINT_LINK, painting.slug);
 ---
 
 <Layout
@@ -83,6 +87,12 @@ const printCheckout = checkoutUrl(STRIPE_PRINT_LINK, painting.slug);
       )}
 
       <div class="artwork-actions">
+        {/*
+          Priced Original/Print buttons (Stripe checkout, falls back to
+          mailto when no Payment Link is set) — on hold. Uncomment this
+          block, plus the import/consts at the top of this file, to bring
+          pricing and checkout back.
+
         {painting.originalPrice ? (
           <a
             href={originalCheckout ?? `mailto:shelarts26@gmail.com?subject=Original Inquiry: ${painting.title} ($${painting.originalPrice})`}
@@ -104,6 +114,15 @@ const printCheckout = checkoutUrl(STRIPE_PRINT_LINK, painting.slug);
           class="btn-inquire btn-inquire--secondary"
         >
           Print Available &middot; ${printPrice}
+        </a>
+
+        */}
+
+        <a
+          href={`mailto:shelarts26@gmail.com?subject=Inquiry: ${painting.title}`}
+          class="btn-inquire"
+        >
+          Inquire About This Work
         </a>
       </div>
     </div>
