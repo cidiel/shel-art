@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { paintings } from '../../data/paintings.js';
+import { paintings, getPrintPrice } from '../../data/paintings.js';
+import { STRIPE_ORIGINAL_LINK, STRIPE_PRINT_LINK, checkoutUrl } from '../../data/checkout.js';
 
 export function getStaticPaths() {
   return paintings
@@ -16,6 +17,9 @@ const categoryRoutes = {
   religious: { slug: 'religious', label: 'Religious' },
 };
 const categoryRoute = categoryRoutes[painting.category];
+const printPrice = getPrintPrice(painting);
+const originalCheckout = checkoutUrl(STRIPE_ORIGINAL_LINK, painting.slug);
+const printCheckout = checkoutUrl(STRIPE_PRINT_LINK, painting.slug);
 ---
 
 <Layout
@@ -78,12 +82,30 @@ const categoryRoute = categoryRoutes[painting.category];
         </div>
       )}
 
-      <a
-        href={`mailto:contact@shelsart.com?subject=Inquiry: ${painting.title}`}
-        class="btn-inquire"
-      >
-        Inquire About This Work
-      </a>
+      <div class="artwork-actions">
+        {painting.originalPrice ? (
+          <a
+            href={originalCheckout ?? `mailto:shelarts26@gmail.com?subject=Original Inquiry: ${painting.title} ($${painting.originalPrice})`}
+            class="btn-inquire"
+          >
+            Original Available &middot; ${painting.originalPrice}
+          </a>
+        ) : (
+          <a
+            href={`mailto:shelarts26@gmail.com?subject=Inquiry: ${painting.title}`}
+            class="btn-inquire"
+          >
+            Inquire About This Work
+          </a>
+        )}
+
+        <a
+          href={printCheckout ?? `mailto:shelarts26@gmail.com?subject=Print Order: ${painting.title} ($${printPrice})`}
+          class="btn-inquire btn-inquire--secondary"
+        >
+          Print Available &middot; ${printPrice}
+        </a>
+      </div>
     </div>
 
   </div>
@@ -250,6 +272,12 @@ const categoryRoute = categoryRoutes[painting.category];
     font-style: italic;
   }
 
+  .artwork-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .btn-inquire {
     display: block;
     width: 100%;
@@ -265,6 +293,18 @@ const categoryRoute = categoryRoutes[painting.category];
 
   .btn-inquire:hover {
     background: var(--accent);
+  }
+
+  .btn-inquire--secondary {
+    background: transparent;
+    border: 1px solid var(--subtle);
+    color: var(--text);
+  }
+
+  .btn-inquire--secondary:hover {
+    background: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   dialog.lightbox {

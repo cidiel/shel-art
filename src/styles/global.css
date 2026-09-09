@@ -151,6 +151,19 @@ a {
   color: var(--muted);
 }
 
+.footer-contact {
+  margin-bottom: 0.6rem;
+}
+
+.footer-contact a {
+  color: var(--accent);
+  transition: color 0.2s;
+}
+
+.footer-contact a:hover {
+  color: var(--text);
+}
+
 /* ── Mobile ──────────────────────────────────── */
 @media (max-width: 640px) {
   .nav {

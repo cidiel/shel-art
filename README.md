@@ -59,26 +59,37 @@ Cloudinary (artwork photos)    Vercel (live site)
 
 ## Next Steps (in order)
 
-### Phase 1 — Accounts & Hello World
-- [ ] Purchase domain on Cloudflare Registrar
-- [ ] Create GitHub account and first repository (`shel-art` or similar)
-- [ ] Create Vercel account, connect to GitHub
-- [ ] Build minimal Astro "hello world" — name, one image, clean layout
-- [ ] Deploy live end-to-end so the full pipeline is working
+### Phase 1 — Accounts & Hello World ✅ Done
+- [x] Purchase domain (`shelsart.com`) — live
+- [x] GitHub repo (`cidiel/shel-art`)
+- [x] Vercel connected, auto-deploying from GitHub
+- [x] Astro site built and deployed end-to-end
 
-### Phase 2 — Gallery & Portfolio
-- [ ] Create Cloudinary account, upload first batch of artwork photos
-- [ ] Build gallery page with high-res image display
-- [ ] Organize by series / medium / style
-- [ ] Add detail shots and scale references
-- [ ] Artist bio and statement page
+### Phase 2 — Gallery & Portfolio ✅ Done
+- [x] Gallery pages by category (Still Lifes / Landscapes / Religious), 20 paintings
+- [x] Painting detail pages with lightbox, meta (year/dimensions/availability)
+- [x] Artist bio / About page
+- [ ] ~~Cloudinary~~ — **deviated from original plan.** Images live directly in `public/images/` and are committed to the repo, not hosted on Cloudinary. Works fine at this image count; revisit only if repo size or load time becomes a problem.
 
-### Phase 3 — Shop (Originals)
-- [ ] Create Stripe account
-- [ ] Build shop page for original works
-- [ ] Stripe checkout integration
-- [ ] Order confirmation flow
-- [ ] "Sold" status for originals
+### Phase 3 — Shop (Originals) — 🚧 In progress, blocked on Stripe account activation
+
+**Design decision (changed from original plan):** no separate `/shop` page. Every painting shows its own buy links right on its detail page (`src/pages/gallery/[slug].astro`). Flat pricing across all paintings — **$1,500/original, $100/print** — using **two shared Stripe Payment Links** (not one per painting), each click tagged with `?client_reference_id=<slug>` so Shel can tell which painting an order was for. Old `shop.astro` moved to `archive/shop.astro`, not deleted, in case we revert.
+
+- [x] `src/data/paintings.js` — flat pricing applied to all 20 paintings
+- [x] `src/data/checkout.js` — added, holds the two Payment Link URLs + `checkoutUrl()` helper; buttons fall back to the old mailto inquiry until both links are set, so nothing breaks mid-setup
+- [x] `gallery/[slug].astro` — buy buttons wired to use `checkout.js`, labels updated to "Original Available · $1500" / "Print Available · $100"
+- [x] Stripe account created, connected live (not test mode) — **"Shel's Art"**, `acct_1UBlegBjc1mBhai3`
+- [x] Products + Prices created: Original Painting ($1500, `price_1UBlp5Bjc1mBhai3PugEAaqD`), Fine Art Print ($100, `price_1UBlpIBjc1mBhai3cDucAJrx`)
+- [x] Payment Links created (shipping address collection on, required "Which painting?" text field as a backup to `client_reference_id`):
+  - Original: `https://buy.stripe.com/3cI3cubm2bSPd0j4evdMI00`
+  - Print: `https://buy.stripe.com/14AcN43TA3mje4naCTdMI01`
+- [ ] **Blocked:** Stripe account not fully activated — `charges_enabled: false`. Two outstanding requirements as of last check:
+  - `individual.id_number` — SSN last-4 failed identity verification; needs full SSN (or ID document upload if that fails too) at https://dashboard.stripe.com/settings/account
+  - `external_account` — no bank account on file yet, needed for payouts, at https://dashboard.stripe.com/settings/payouts
+- [ ] Once `charges_enabled: true`: paste the two URLs above into `STRIPE_ORIGINAL_LINK` / `STRIPE_PRINT_LINK` in `src/data/checkout.js`, rebuild, commit, push
+- [ ] Do one real end-to-end test purchase (small/refundable) to confirm the full flow
+- [ ] Decide the "mark sold" flow — likely: null out that painting's `originalPrice` in `paintings.js` once an original sells, so its buy button disappears (the two Payment Links are shared across all paintings, so nothing to deactivate per-painting on the Stripe side)
+- [ ] Commit the currently-uncommitted local changes (shop archive, pricing, checkout.js, gallery page) once links are live
 
 ### Phase 4 — Shop (Prints)
 - [ ] Create Printful account

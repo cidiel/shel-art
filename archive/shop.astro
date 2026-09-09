@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryHeader from '../components/GalleryHeader.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import { paintings } from '../data/paintings.js';
+
+const purchasable = paintings.filter((p) => p.slug !== null);
+---
+
+<Layout title="Shop — Shel's Art" description="Original oil paintings and fine art prints by Shel">
+  <GalleryHeader title="Shop" subtitle="Prints and original oil paintings" />
+  <GalleryGrid paintings={purchasable} showPrice={true} />
+</Layout>

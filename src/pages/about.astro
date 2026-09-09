@@ -45,11 +45,17 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <a
-        href="mailto:contact@shelsart.com?subject=Commission Inquiry"
+        href="mailto:shelarts26@gmail.com?subject=Commission Inquiry"
         class="btn-inquire"
       >
         Get In Touch
       </a>
+
+      <p class="about-contact">
+        <a href="mailto:shelarts26@gmail.com">shelarts26@gmail.com</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://instagram.com/shelarts27" target="_blank" rel="noopener noreferrer">@shelarts27</a>
+      </p>
     </div>
 
   </div>
@@ -117,6 +123,22 @@ import Layout from '../layouts/Layout.astro';
     letter-spacing: 0.14em;
     text-transform: uppercase;
     transition: background 0.2s;
+  }
+
+  .about-contact {
+    margin-top: 1rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+
+  .about-contact a {
+    color: var(--accent);
+    transition: color 0.2s;
+  }
+
+  .about-contact a:hover {
+    color: var(--text);
   }
 
   .btn-inquire:hover {

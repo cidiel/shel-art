@@ -1,5 +1,7 @@
 ---
-const { paintings } = Astro.props;
+import { getPrintPrice } from '../data/paintings.js';
+
+const { paintings, showPrice = false } = Astro.props;
 ---
 
 <div class="gallery-grid">
@@ -19,6 +21,12 @@ const { paintings } = Astro.props;
               {p.medium}
               {p.exhibition && <span class="card-note">&nbsp;&middot;&nbsp;ArtPrize 2025</span>}
             </p>
+            {showPrice && (
+              <p class="card-price">
+                Print &middot; ${getPrintPrice(p)}
+                {p.originalPrice && <span>&nbsp;&nbsp;Original &middot; ${p.originalPrice}</span>}
+              </p>
+            )}
           </div>
         </a>
       ) : (
@@ -115,6 +123,13 @@ const { paintings } = Astro.props;
     font-size: 0.78rem;
     letter-spacing: 0.06em;
     color: var(--muted);
+  }
+
+  .card-price {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    margin-top: 0.3rem;
   }
 
   .card-note {

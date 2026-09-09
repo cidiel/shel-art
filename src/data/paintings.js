@@ -1,3 +1,12 @@
+// Flat fallback for any painting that doesn't set its own printPrice.
+// Override per painting (e.g. a larger canvas warranting a larger, pricier print)
+// by adding a printPrice field to that painting's entry.
+export const DEFAULT_PRINT_PRICE = 100;
+
+export function getPrintPrice(painting) {
+  return painting.printPrice ?? DEFAULT_PRINT_PRICE;
+}
+
 export const paintings = [
   {
     slug: 'milk-and-honey',
@@ -9,6 +18,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Currently Exhibited',
     exhibition: 'Exhibiting at ArtPrize, Grand Rapids, MI · Fall 2026',
+    originalPrice: 1500,
     description: 'A quietly loaded table — honey and bread, a peeled tangerine, a painted jug. The arrangement is simple; the weight of it is not.',
   },
   {
@@ -21,6 +31,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -33,6 +44,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -45,6 +57,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -57,6 +70,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -69,6 +83,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -81,6 +96,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -93,6 +109,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -105,6 +122,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -117,6 +135,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'A handled dish, half full of blueberries, set down on rumpled white linen — nothing arranged, nothing fussed over.',
   },
   {
@@ -129,6 +148,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'An orange, a lemon, a lime, still holding the shape of the cutting board beneath them — the blue towel doing all the work of drama.',
   },
   {
@@ -141,6 +161,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'Three potatoes on a torn sheet of foil — proof that the unglamorous still deserves good light.',
   },
   {
@@ -153,6 +174,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'Two lemons split open on a striped towel, sour and bright, caught before anyone thought to use them.',
   },
   {
@@ -165,6 +187,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'A conch shell and a strand of pearls, laid side by side on coral silk — two different things the sea decided to keep.',
   },
   {
@@ -177,6 +200,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -189,6 +213,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: null,
   },
   {
@@ -201,6 +226,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'A cabbage split open on rumpled linen, its violet rings catching the light — the knife just out of frame, still part of the scene.',
   },
   {
@@ -213,6 +239,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'The last heel of a loaf, set down on a dish too fine for it.',
   },
   {
@@ -225,6 +252,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'Caps still on, stems still green — two strawberries on a worn board, nothing added.',
   },
   {
@@ -237,6 +265,7 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: 'A dried starfish resting in a glazed bowl, its points catching the light like something just brought in from the shore.',
   },
   {
@@ -249,6 +278,33 @@ export const paintings = [
     dimensions: null,
     availability: 'Available',
     exhibition: null,
+    originalPrice: 1500,
     description: "A conch shell, a scatter of small shells, and a strand of pearls laid across blue silk — everything the sea gave up, and one thing it didn't.",
+  },
+  {
+    slug: 'apricots-in-a-white-cup',
+    title: 'Apricots in a White Cup',
+    category: 'still-life',
+    src: '/images/IMG_0143.jpg',
+    medium: 'Oil on canvas',
+    year: null,
+    dimensions: null,
+    availability: 'Available',
+    exhibition: null,
+    originalPrice: 1500,
+    description: 'Apricots spilling from an embossed white cup onto dark blue cloth, a few more scattered loose beside it.',
+  },
+  {
+    slug: 'field-path-in-summer',
+    title: 'Field Path in Summer',
+    category: 'landscape',
+    src: '/images/IMG_0185.jpg',
+    medium: 'Oil on canvas',
+    year: null,
+    dimensions: null,
+    availability: 'Available',
+    exhibition: null,
+    originalPrice: 1500,
+    description: 'A sunlit dirt path skirting a wildflower field, goldenrod and loosestrife crowding the edge where the mown ground gives way to meadow.',
   },
 ];
