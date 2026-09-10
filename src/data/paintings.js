@@ -7,6 +7,13 @@ export function getPrintPrice(painting) {
   return painting.printPrice ?? DEFAULT_PRINT_PRICE;
 }
 
+// "Milk and Honey" is the only piece the artist has actually named.
+// Every other painting's `title` is left `null` — don't invent one; the
+// site should display and refer to it as "Untitled" until she names it.
+export function getDisplayTitle(painting) {
+  return painting.title ?? 'Untitled';
+}
+
 export const paintings = [
   {
     slug: 'milk-and-honey',
@@ -23,7 +30,7 @@ export const paintings = [
   },
   {
     slug: 'radishes-on-a-platter',
-    title: 'Radishes on a Platter',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0010.jpg',
     medium: 'Oil on canvas',
@@ -36,7 +43,7 @@ export const paintings = [
   },
   {
     slug: 'red-onion-and-blood',
-    title: 'Red Onion and Blood',
+    title: null,
     category: 'religious',
     src: '/images/IMG_0016.jpg',
     medium: 'Oil on canvas',
@@ -49,7 +56,7 @@ export const paintings = [
   },
   {
     slug: 'forgiveness',
-    title: 'A Sketch of Forgiveness',
+    title: null,
     category: 'religious',
     src: '/images/IMG_0005.JPG',
     medium: 'Oil on canvas',
@@ -62,7 +69,7 @@ export const paintings = [
   },
   {
     slug: 'plump-green-grapes',
-    title: 'Plump Green Grapes',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0029.jpg',
     medium: 'Oil on canvas',
@@ -75,7 +82,7 @@ export const paintings = [
   },
   {
     slug: 'cantaloupe-and-a-feather',
-    title: 'Cantaloupe and a Feather',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0014.jpg',
     medium: 'Oil on canvas',
@@ -88,7 +95,7 @@ export const paintings = [
   },
   {
     slug: 'we-worship',
-    title: 'We Worship',
+    title: null,
     category: 'religious',
     src: '/images/IMG_0012.jpg',
     medium: 'Oil on canvas',
@@ -101,7 +108,7 @@ export const paintings = [
   },
   {
     slug: 'happy-birthday-lord',
-    title: 'Happy Birthday Lord',
+    title: null,
     category: 'religious',
     src: '/images/IMG_0013.jpg',
     medium: 'Oil on canvas',
@@ -114,7 +121,7 @@ export const paintings = [
   },
   {
     slug: 'god-of-the-universe',
-    title: 'God of the Universe',
+    title: null,
     category: 'religious',
     src: '/images/IMG_0015.jpg',
     medium: 'Oil on canvas',
@@ -127,7 +134,7 @@ export const paintings = [
   },
   {
     slug: 'blueberries-in-terracotta',
-    title: 'Blueberries in Terracotta',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0017.jpg',
     medium: 'Oil on canvas',
@@ -140,7 +147,7 @@ export const paintings = [
   },
   {
     slug: 'citrus-and-blue-linen',
-    title: 'Citrus and Blue Linen',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0020.jpg',
     medium: 'Oil on canvas',
@@ -153,7 +160,7 @@ export const paintings = [
   },
   {
     slug: 'potatoes-in-foil',
-    title: 'Potatoes in Foil',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0025.jpg',
     medium: 'Oil on canvas',
@@ -166,7 +173,7 @@ export const paintings = [
   },
   {
     slug: 'lemons-on-a-striped-towel',
-    title: 'Lemons on a Striped Towel',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0030.jpg',
     medium: 'Oil on canvas',
@@ -179,7 +186,7 @@ export const paintings = [
   },
   {
     slug: 'what-the-tide-left-behind',
-    title: 'What the Tide Left Behind',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0032.jpg',
     medium: 'Oil on canvas',
@@ -190,22 +197,25 @@ export const paintings = [
     originalPrice: 1500,
     description: 'A conch shell and a strand of pearls, laid side by side on coral silk — two different things the sea decided to keep.',
   },
-  {
-    slug: 'wildflowers-in-a-jar',
-    title: 'Wildflowers in a Jar',
-    category: 'still-life',
-    src: '/images/IMG_0021.jpg',
-    medium: 'Oil on canvas',
-    year: null,
-    dimensions: null,
-    availability: 'Available',
-    exhibition: null,
-    originalPrice: 1500,
-    description: null,
-  },
+  // Wildflowers in a Jar (IMG_0021) — pulled at the artist's request, she
+  // doesn't like this piece. Left here commented rather than deleted in
+  // case that changes.
+  // {
+  //   slug: 'wildflowers-in-a-jar',
+  //   title: 'Wildflowers in a Jar',
+  //   category: 'still-life',
+  //   src: '/images/IMG_0021.jpg',
+  //   medium: 'Oil on canvas',
+  //   year: null,
+  //   dimensions: null,
+  //   availability: 'Available',
+  //   exhibition: null,
+  //   originalPrice: 1500,
+  //   description: null,
+  // },
   {
     slug: 'the-last-roll',
-    title: 'The Last Roll',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0026.jpg',
     medium: 'Oil on canvas',
@@ -218,7 +228,7 @@ export const paintings = [
   },
   {
     slug: 'red-cabbage-halved',
-    title: 'Red Cabbage',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0019.jpg',
     medium: 'Oil on canvas',
@@ -231,7 +241,7 @@ export const paintings = [
   },
   {
     slug: 'bread-on-crystal',
-    title: 'Bread on Crystal',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0027_c.jpg',
     medium: 'Oil on canvas',
@@ -244,7 +254,7 @@ export const paintings = [
   },
   {
     slug: 'two-strawberries',
-    title: 'Two Strawberries',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0028_c.jpg',
     medium: 'Oil on canvas',
@@ -257,7 +267,7 @@ export const paintings = [
   },
   {
     slug: 'starfish-in-a-bowl',
-    title: 'Starfish in a Bowl',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0031_c.jpg',
     medium: 'Oil on canvas',
@@ -270,7 +280,7 @@ export const paintings = [
   },
   {
     slug: 'low-tide',
-    title: 'Low Tide',
+    title: null,
     category: 'still-life',
     src: '/images/IMG_0033_c.jpg',
     medium: 'Oil on canvas',
@@ -281,22 +291,24 @@ export const paintings = [
     originalPrice: 1500,
     description: "A conch shell, a scatter of small shells, and a strand of pearls laid across blue silk — everything the sea gave up, and one thing it didn't.",
   },
-  {
-    slug: 'apricots-in-a-white-cup',
-    title: 'Apricots in a White Cup',
-    category: 'still-life',
-    src: '/images/IMG_0143.jpg',
-    medium: 'Oil on canvas',
-    year: null,
-    dimensions: null,
-    availability: 'Available',
-    exhibition: null,
-    originalPrice: 1500,
-    description: 'Apricots spilling from an embossed white cup onto dark blue cloth, a few more scattered loose beside it.',
-  },
+  // Apricots in a White Cup (IMG_0143) — photo is too dark to represent the
+  // piece well. Commented out until a better photo of it exists.
+  // {
+  //   slug: 'apricots-in-a-white-cup',
+  //   title: 'Apricots in a White Cup',
+  //   category: 'still-life',
+  //   src: '/images/IMG_0143.jpg',
+  //   medium: 'Oil on canvas',
+  //   year: null,
+  //   dimensions: null,
+  //   availability: 'Available',
+  //   exhibition: null,
+  //   originalPrice: 1500,
+  //   description: 'Apricots spilling from an embossed white cup onto dark blue cloth, a few more scattered loose beside it.',
+  // },
   {
     slug: 'field-path-in-summer',
-    title: 'Field Path in Summer',
+    title: null,
     category: 'landscape',
     src: '/images/IMG_0185.jpg',
     medium: 'Oil on canvas',

@@ -1,5 +1,5 @@
 ---
-import { getPrintPrice } from '../data/paintings.js';
+import { getPrintPrice, getDisplayTitle } from '../data/paintings.js';
 
 const { paintings, showPrice = false } = Astro.props;
 ---
@@ -10,13 +10,13 @@ const { paintings, showPrice = false } = Astro.props;
       {p.slug ? (
         <a href={`/gallery/${p.slug}`}>
           <div class="card-image">
-            <img src={p.src} alt={p.title} />
+            <img src={p.src} alt={getDisplayTitle(p)} />
             <div class="card-overlay">
               <span>View work</span>
             </div>
           </div>
           <div class="card-info">
-            <p class="card-title">{p.title}</p>
+            <p class="card-title">{getDisplayTitle(p)}</p>
             <p class="card-medium">
               {p.medium}
               {p.exhibition && <span class="card-note">&nbsp;&middot;&nbsp;ArtPrize 2025</span>}
@@ -32,10 +32,10 @@ const { paintings, showPrice = false } = Astro.props;
       ) : (
         <div>
           <div class="card-image">
-            <img src={p.src} alt={p.title} />
+            <img src={p.src} alt={getDisplayTitle(p)} />
           </div>
           <div class="card-info">
-            <p class="card-title card-title--muted">{p.title}</p>
+            <p class="card-title card-title--muted">{getDisplayTitle(p)}</p>
             <p class="card-medium">{p.medium}</p>
           </div>
         </div>
@@ -71,8 +71,7 @@ const { paintings, showPrice = false } = Astro.props;
 
   .card-image img {
     width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    height: auto;
     transition: transform 0.5s ease;
     display: block;
   }

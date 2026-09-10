@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { paintings } from '../../data/paintings.js';
+import { paintings, getDisplayTitle } from '../../data/paintings.js';
 // Stripe checkout (priced Original/Print buttons) — on hold, not live yet.
 // To bring it back: uncomment this import, the three `const` lines below,
 // and the commented JSX block in artwork-actions further down.
@@ -24,11 +24,15 @@ const categoryRoute = categoryRoutes[painting.category];
 // const printPrice = getPrintPrice(painting);
 // const originalCheckout = checkoutUrl(STRIPE_ORIGINAL_LINK, painting.slug);
 // const printCheckout = checkoutUrl(STRIPE_PRINT_LINK, painting.slug);
+const displayTitle = getDisplayTitle(painting);
+// Untitled pieces all share the label "Untitled" — fold in the slug so an
+// inquiry email still tells the artist which painting it's about.
+const inquirySubject = painting.title ? displayTitle : `Untitled (${painting.slug})`;
 ---
 
 <Layout
-  title={`${painting.title} — Shel's Art`}
-  description={painting.description ?? `${painting.title} — original oil painting by Shel.`}
+  title={`${displayTitle} — Shel's Art`}
+  description={painting.description ?? `${displayTitle} — original oil painting by Shel.`}
 >
   <div class="breadcrumb">
     <a href={`/gallery/${categoryRoute.slug}`}>&larr; {categoryRoute.label}</a>
@@ -41,7 +45,7 @@ const categoryRoute = categoryRoutes[painting.category];
       <figure class="artwork-figure">
         <img
           src={painting.src}
-          alt={`${painting.title} — oil on canvas`}
+          alt={`${displayTitle} — oil on canvas`}
           class="artwork-img"
           id="artworkImg"
           title="Click to inspect"
@@ -53,7 +57,7 @@ const categoryRoute = categoryRoutes[painting.category];
     <!-- Details -->
     <div class="artwork-right">
       <p class="artwork-label">Original</p>
-      <h1 class="artwork-title">{painting.title}</h1>
+      <h1 class="artwork-title">{displayTitle}</h1>
       <p class="artwork-medium">{painting.medium}</p>
 
       {painting.exhibition && (
@@ -119,7 +123,7 @@ const categoryRoute = categoryRoutes[painting.category];
         */}
 
         <a
-          href={`mailto:shelarts26@gmail.com?subject=Inquiry: ${painting.title}`}
+          href={`mailto:shelarts26@gmail.com?subject=Inquiry: ${inquirySubject}`}
           class="btn-inquire"
         >
           Inquire About This Work
@@ -134,7 +138,7 @@ const categoryRoute = categoryRoutes[painting.category];
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
     <img
       src={painting.src}
-      alt={`${painting.title} — full resolution`}
+      alt={`${displayTitle} — full resolution`}
       class="lightbox-img"
     />
   </dialog>
