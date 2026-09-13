@@ -7,9 +7,10 @@ export function getPrintPrice(painting) {
   return painting.printPrice ?? DEFAULT_PRINT_PRICE;
 }
 
-// "Milk and Honey" is the only piece the artist has actually named.
-// Every other painting's `title` is left `null` — don't invent one; the
-// site should display and refer to it as "Untitled" until she names it.
+// Most paintings carry their real title. The three landscapes added most
+// recently (field-path-in-summer, lakeside-meadow, footbridge-over-the-creek)
+// are left `title: null` until the artist names them — don't invent one; the
+// site should display and refer to them as "Untitled" until then.
 export function getDisplayTitle(painting) {
   return painting.title ?? 'Untitled';
 }
@@ -30,7 +31,7 @@ export const paintings = [
   },
   {
     slug: 'radishes-on-a-platter',
-    title: null,
+    title: 'Radishes on a Platter',
     category: 'still-life',
     src: '/images/IMG_0010.jpg',
     medium: 'Oil on canvas',
@@ -43,7 +44,7 @@ export const paintings = [
   },
   {
     slug: 'red-onion-and-blood',
-    title: null,
+    title: 'Red Onion and Blood',
     category: 'religious',
     src: '/images/IMG_0016.jpg',
     medium: 'Oil on canvas',
@@ -56,7 +57,7 @@ export const paintings = [
   },
   {
     slug: 'forgiveness',
-    title: null,
+    title: 'A Sketch of Forgiveness',
     category: 'religious',
     src: '/images/IMG_0005.JPG',
     medium: 'Oil on canvas',
@@ -69,7 +70,7 @@ export const paintings = [
   },
   {
     slug: 'plump-green-grapes',
-    title: null,
+    title: 'Plump Green Grapes',
     category: 'still-life',
     src: '/images/IMG_0029.jpg',
     medium: 'Oil on canvas',
@@ -82,7 +83,7 @@ export const paintings = [
   },
   {
     slug: 'cantaloupe-and-a-feather',
-    title: null,
+    title: 'Cantaloupe and a Feather',
     category: 'still-life',
     src: '/images/IMG_0014.jpg',
     medium: 'Oil on canvas',
@@ -95,7 +96,7 @@ export const paintings = [
   },
   {
     slug: 'we-worship',
-    title: null,
+    title: 'We Worship',
     category: 'religious',
     src: '/images/IMG_0012.jpg',
     medium: 'Oil on canvas',
@@ -108,7 +109,7 @@ export const paintings = [
   },
   {
     slug: 'happy-birthday-lord',
-    title: null,
+    title: 'Happy Birthday Lord',
     category: 'religious',
     src: '/images/IMG_0013.jpg',
     medium: 'Oil on canvas',
@@ -121,7 +122,7 @@ export const paintings = [
   },
   {
     slug: 'god-of-the-universe',
-    title: null,
+    title: 'God of the Universe',
     category: 'religious',
     src: '/images/IMG_0015.jpg',
     medium: 'Oil on canvas',
@@ -134,7 +135,7 @@ export const paintings = [
   },
   {
     slug: 'blueberries-in-terracotta',
-    title: null,
+    title: 'Blueberries in Terracotta',
     category: 'still-life',
     src: '/images/IMG_0017.jpg',
     medium: 'Oil on canvas',
@@ -147,7 +148,7 @@ export const paintings = [
   },
   {
     slug: 'citrus-and-blue-linen',
-    title: null,
+    title: 'Citrus and Blue Linen',
     category: 'still-life',
     src: '/images/IMG_0020.jpg',
     medium: 'Oil on canvas',
@@ -160,7 +161,7 @@ export const paintings = [
   },
   {
     slug: 'potatoes-in-foil',
-    title: null,
+    title: 'Potatoes in Foil',
     category: 'still-life',
     src: '/images/IMG_0025.jpg',
     medium: 'Oil on canvas',
@@ -173,7 +174,7 @@ export const paintings = [
   },
   {
     slug: 'lemons-on-a-striped-towel',
-    title: null,
+    title: 'Lemons on a Striped Towel',
     category: 'still-life',
     src: '/images/IMG_0030.jpg',
     medium: 'Oil on canvas',
@@ -186,7 +187,7 @@ export const paintings = [
   },
   {
     slug: 'what-the-tide-left-behind',
-    title: null,
+    title: 'What the Tide Left Behind',
     category: 'still-life',
     src: '/images/IMG_0032.jpg',
     medium: 'Oil on canvas',
@@ -215,7 +216,7 @@ export const paintings = [
   // },
   {
     slug: 'the-last-roll',
-    title: null,
+    title: 'The Last Roll',
     category: 'still-life',
     src: '/images/IMG_0026.jpg',
     medium: 'Oil on canvas',
@@ -228,7 +229,7 @@ export const paintings = [
   },
   {
     slug: 'red-cabbage-halved',
-    title: null,
+    title: 'Red Cabbage',
     category: 'still-life',
     src: '/images/IMG_0019.jpg',
     medium: 'Oil on canvas',
@@ -241,7 +242,7 @@ export const paintings = [
   },
   {
     slug: 'bread-on-crystal',
-    title: null,
+    title: 'Bread on Crystal',
     category: 'still-life',
     src: '/images/IMG_0027_c.jpg',
     medium: 'Oil on canvas',
@@ -254,7 +255,7 @@ export const paintings = [
   },
   {
     slug: 'two-strawberries',
-    title: null,
+    title: 'Two Strawberries',
     category: 'still-life',
     src: '/images/IMG_0028_c.jpg',
     medium: 'Oil on canvas',
@@ -267,7 +268,7 @@ export const paintings = [
   },
   {
     slug: 'starfish-in-a-bowl',
-    title: null,
+    title: 'Starfish in a Bowl',
     category: 'still-life',
     src: '/images/IMG_0031_c.jpg',
     medium: 'Oil on canvas',
@@ -280,7 +281,7 @@ export const paintings = [
   },
   {
     slug: 'low-tide',
-    title: null,
+    title: 'Low Tide',
     category: 'still-life',
     src: '/images/IMG_0033_c.jpg',
     medium: 'Oil on canvas',
@@ -295,7 +296,7 @@ export const paintings = [
     // Re-added with a better, properly lit photo (IMG_0200) replacing the
     // old too-dark IMG_0143.
     slug: 'apricots-in-a-white-cup',
-    title: null,
+    title: 'Apricots in a White Cup',
     category: 'still-life',
     src: '/images/IMG_0200.jpeg',
     medium: 'Oil on canvas',
