@@ -7,10 +7,9 @@ export function getPrintPrice(painting) {
   return painting.printPrice ?? DEFAULT_PRINT_PRICE;
 }
 
-// Most paintings carry their real title. The three landscapes added most
-// recently (field-path-in-summer, lakeside-meadow, footbridge-over-the-creek)
-// are left `title: null` until the artist names them — don't invent one; the
-// site should display and refer to them as "Untitled" until then.
+// Every painting is expected to carry a real title. A new piece added
+// before the artist has named it should be left `title: null` — don't
+// invent one; the site displays and refers to it as "Untitled" until then.
 export function getDisplayTitle(painting) {
   return painting.title ?? 'Untitled';
 }
@@ -361,7 +360,7 @@ export const paintings = [
   },
   {
     slug: 'field-path-in-summer',
-    title: null,
+    title: 'Sunny Day Meadow',
     category: 'landscape',
     src: '/images/IMG_0185.jpg',
     medium: 'Oil on canvas',
@@ -374,7 +373,7 @@ export const paintings = [
   },
   {
     slug: 'lakeside-meadow',
-    title: null,
+    title: 'Grassy Path',
     category: 'landscape',
     src: '/images/IMG_0213.JPG',
     medium: 'Oil on canvas',
@@ -387,7 +386,7 @@ export const paintings = [
   },
   {
     slug: 'footbridge-over-the-creek',
-    title: null,
+    title: 'Woodland Oasis',
     category: 'landscape',
     src: '/images/IMG_0214.JPG',
     medium: 'Oil on canvas',
