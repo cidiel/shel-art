@@ -309,7 +309,7 @@ export const paintings = [
   },
   {
     slug: 'loose-change',
-    title: null,
+    title: 'Coinage',
     category: 'still-life',
     src: '/images/IMG_0221.JPG',
     medium: 'Oil on canvas',
@@ -322,7 +322,7 @@ export const paintings = [
   },
   {
     slug: 'garlic-and-walnuts',
-    title: null,
+    title: 'Raw Pairings',
     category: 'still-life',
     src: '/images/IMG_0225.JPG',
     medium: 'Oil on canvas',
@@ -335,7 +335,7 @@ export const paintings = [
   },
   {
     slug: 'dragon-fruit',
-    title: null,
+    title: 'Dragon Fruit',
     category: 'still-life',
     src: '/images/IMG_0227.JPG',
     medium: 'Oil on canvas',
@@ -348,7 +348,7 @@ export const paintings = [
   },
   {
     slug: 'oranges-in-a-terracotta-bowl',
-    title: null,
+    title: 'Oranges in a Terracotta Bowl',
     category: 'still-life',
     src: '/images/IMG_0228.JPG',
     medium: 'Oil on canvas',
