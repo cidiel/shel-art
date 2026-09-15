@@ -25,8 +25,8 @@ import Layout from '../layouts/Layout.astro';
           <li><a href="/gallery/religious">Religious</a></li>
         </ul>
       </div>
-      <a href="/shop" class="btn-secondary">Shop Prints</a>
     </div>
+    <p class="hero-byline">Originals and prints coming soon for sale &nbsp;&middot;&nbsp; <a href="/shop">inquire about a piece</a></p>
   </section>
 
   <!-- Artist Statement -->
@@ -104,6 +104,25 @@ import Layout from '../layouts/Layout.astro';
     justify-content: center;
   }
 
+  .hero-byline {
+    margin-top: 1.5rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  .hero-byline a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .hero-byline a:hover {
+    color: var(--text);
+    border-color: var(--text);
+  }
+
   .btn-primary {
     padding: 0.75rem 2rem;
     background: var(--text);
@@ -163,21 +182,6 @@ import Layout from '../layouts/Layout.astro';
   .gallery-dropdown:focus-within .gallery-dropdown-menu {
     opacity: 1;
     visibility: visible;
-  }
-
-  .btn-secondary {
-    padding: 0.75rem 2rem;
-    border: 1px solid var(--subtle);
-    color: var(--text);
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
   }
 
   /* ── Artist Statement ──────────────────────── */
