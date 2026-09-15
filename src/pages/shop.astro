@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Shop — Shel's Art"
+  description="Original oil paintings and fine art prints by Shel's Art — coming soon."
+>
+  <div class="shop-coming-soon">
+    <p class="shop-label">Shop</p>
+    <h1 class="shop-title">Shel's Art</h1>
+    <p class="shop-statement">
+      Originals and prints will be available for purchase here soon. In the
+      meantime, please inquire about any piece you'd like to purchase —
+      browse the
+      <a href="/gallery/still-lifes">Still Lifes</a>,
+      <a href="/gallery/landscapes">Landscapes</a>, or
+      <a href="/gallery/religious">Religious</a> galleries and reach out
+      about a specific work.
+    </p>
+    <a
+      href="mailto:shelarts26@gmail.com?subject=Purchase Inquiry"
+      class="btn-inquire"
+    >
+      Inquire About a Piece
+    </a>
+  </div>
+</Layout>
+
+<style>
+  .shop-coming-soon {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 5rem 2rem 6rem;
+    text-align: center;
+  }
+
+  .shop-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .shop-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 1.75rem;
+  }
+
+  .shop-statement {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--text);
+    margin-bottom: 2.25rem;
+  }
+
+  .shop-statement a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .shop-statement a:hover {
+    color: var(--text);
+    border-color: var(--text);
+  }
+
+  .btn-inquire {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    background: var(--text);
+    color: var(--bg);
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  .btn-inquire:hover {
+    background: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .shop-coming-soon {
+      padding: 3.5rem 1.25rem 4rem;
+    }
+  }
+</style>
