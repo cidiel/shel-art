@@ -101,9 +101,9 @@ export const paintings = [
   },
   {
     slug: 'milk-and-honey-part-2',
-    title: 'Milk & Honey II',
+    title: 'Milk and Honey II',
     category: 'still-life',
-    src: '/images/IMG_0168.jpg',
+    src: '/images/IMG_0169.jpg',
     medium: 'Oil on canvas',
     year: null,
     dimensions: null,
