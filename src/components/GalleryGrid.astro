@@ -19,7 +19,7 @@ const { paintings, showPrice = false } = Astro.props;
             <p class="card-title">{getDisplayTitle(p)}</p>
             <p class="card-medium">
               {p.medium}
-              {p.exhibition && <span class="card-note">&nbsp;&middot;&nbsp;ArtPrize 2025</span>}
+              {p.exhibitionShort && <span class="card-note">&nbsp;&middot;&nbsp;{p.exhibitionShort}</span>}
             </p>
             {showPrice && (
               <p class="card-price">

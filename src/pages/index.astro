@@ -9,10 +9,15 @@ import Layout from '../layouts/Layout.astro';
     <p class="hero-label">Original Oil Paintings</p>
     <div class="hero-image">
       <img
-        src="/images/IMG_0007.JPG"
-        alt="Milk and Honey — oil on canvas still life with ceramic pitcher, tangerine, and bread"
+        src="/images/IMG_0168.jpg"
+        alt="Milk and Honey, Part 2 — oil on canvas still life with a painted jug, tangerine, bread with butter, honeycomb, and raspberries on a plate"
       />
-      <p class="hero-caption"><em>Milk and Honey</em> &nbsp;&middot;&nbsp; 2025 &nbsp;&middot;&nbsp; Oil on canvas &nbsp;&middot;&nbsp; <span class="artprize-note">Exhibiting at ArtPrize, Grand Rapids, MI &nbsp;&middot;&nbsp; Fall 2026</span></p>
+      <p class="hero-caption"><a href="/gallery/milk-and-honey-part-2"><em>Milk and Honey, Part 2</em></a> &nbsp;&middot;&nbsp; Oil on canvas</p>
+      <div class="exhibit-info">
+        <p class="exhibit-label">Now on exhibition</p>
+        <p class="exhibit-name">76th Annual Academic Artists Association Exhibition of Traditional Realism</p>
+        <p class="exhibit-venue">New Hartford Art Gallery &nbsp;&middot;&nbsp; October 3&ndash;31, 2026</p>
+      </div>
     </div>
     <h1 class="hero-title">Shel's Art</h1>
     <p class="hero-sub">Oil on canvas originals &nbsp;&middot;&nbsp; Prints available</p>
@@ -27,6 +32,25 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
     <p class="hero-byline">Originals and prints coming soon for sale &nbsp;&middot;&nbsp; <a href="/shop">inquire about a piece</a></p>
+  </section>
+
+  <!-- Second Exhibition -->
+  <section class="exhibition">
+    <div class="exhibition-inner">
+      <p class="hero-label">Also on exhibition</p>
+      <div class="hero-image">
+        <img
+          src="/images/IMG_0229.JPG"
+          alt="Radishes 2.0 — oil on canvas still life of red radishes and greens on a grey plate, with a fork"
+        />
+        <p class="hero-caption"><a href="/gallery/radishes-2-0"><em>Radishes 2.0</em></a> &nbsp;&middot;&nbsp; Oil on canvas</p>
+        <div class="exhibit-info">
+          <p class="exhibit-label">Now on exhibition</p>
+          <p class="exhibit-name">Harvest Awards Art Show<br /><em>Unseen Roots: How Food Connects Us All</em></p>
+          <p class="exhibit-venue">Franklin Conservatory, Wells Barn &nbsp;&middot;&nbsp; October 8, 2026, 5:30&ndash;7:30 PM</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Artist Statement -->
@@ -77,8 +101,62 @@ import Layout from '../layouts/Layout.astro';
     text-align: center;
   }
 
-  .artprize-note {
+  .hero-caption a {
+    color: var(--text);
+    border-bottom: 1px solid var(--subtle);
+    transition: border-color 0.2s;
+  }
+
+  .hero-caption a:hover {
+    border-color: var(--accent);
+  }
+
+  .exhibit-info {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--subtle);
+  }
+
+  .exhibit-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .exhibit-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 0.35rem;
+  }
+
+  .exhibit-venue {
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Second Exhibition ─────────────────────── */
+  .exhibition {
+    border-top: 1px solid var(--subtle);
+    padding: 4rem 2rem;
+  }
+
+  .exhibition-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .exhibition .hero-image {
+    margin-bottom: 0;
+  }
+
+  .exhibition .exhibit-info {
+    text-align: center;
   }
 
   .hero-title {
